@@ -1,3 +1,24 @@
+# GITHUB REPOSITORIES EXPLORER 🚀
+
+## 🔥 ABOUT THIS PROJECT
+I made this app in **two versions**: **JSX and TSX**.  
+Instead of using the **GitHub API**, I used **MockAPI.io** as an alternative.
+
+## 🚀 HOSTING
+This project is deployed on **Railway**.
+
+## ⚡ TECH STACK
+- React (JSX & TSX)
+- TypeScript
+- Tailwind CSS
+- Axios
+- MockAPI.io
+- Railway Hosting
+
+## 📂 PROJECT STRUCTURE
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
