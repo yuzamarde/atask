@@ -5,7 +5,7 @@ import { IconChevronDown, IconStar } from "@tabler/icons-react"; // Import icon 
 interface Repository {
     title: string;
     description: string;
-    likes: string; // Bisa diubah ke number jika backend mengembalikannya sebagai angka
+    likes: string;
 }
 
 // Definisikan tipe data untuk user
@@ -43,17 +43,15 @@ const UserList: React.FC<UserListProps> = ({ users, loading, searchPerformed }) 
 
     return (
         <div className="w-full max-w-md mx-auto mt-4">
-            {/* Tampilkan loading hanya jika sedang mencari */}
             {loading ? (
                 <p className="text-center text-gray-500 font-semibold">Searching...</p>
             ) : searchPerformed && users.length === 0 ? (
-                /* Tampilkan "User not found" hanya setelah pencarian dilakukan */
+
                 <p className="text-center text-red-600 font-semibold">User not found</p>
             ) : (
                 <ul className="space-y-3">
                     {users.map((user, index) => (
                         <li key={user.id} className="border rounded-lg bg-white shadow-md">
-                            {/* Tombol untuk membuka dropdown */}
                             <button
                                 className="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-100 focus:outline-none"
                                 onClick={() => toggleDropdown(index)}
@@ -66,12 +64,10 @@ const UserList: React.FC<UserListProps> = ({ users, loading, searchPerformed }) 
                                 />
                             </button>
 
-                            {/* Dropdown untuk menampilkan data repository */}
                             {openIndex === index && (
                                 <div className="border-t bg-gray-50 p-4">
                                     <h4 className="text-sm font-semibold text-gray-700 mb-2">Repositories:</h4>
 
-                                    {/* Pastikan data ada atau tampilkan pesan jika tidak */}
                                     {Array.isArray(user.data) && user.data.length > 0 ? (
                                         <ul className="space-y-2">
                                             {user.data.map((repo, repoIndex) => {

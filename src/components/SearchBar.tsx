@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 interface SearchBarProps {
-    onSearch: (query: string) => void; // Menentukan tipe props onSearch sebagai fungsi yang menerima string
+    onSearch: (query: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
@@ -28,7 +28,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
                 placeholder="Search MockAPI users..."
                 value={query}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
-                onKeyDown={handleKeyPress} // Mengganti onKeyPress dengan onKeyDown karena onKeyPress sudah deprecated
+                onKeyDown={handleKeyPress}
                 className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
             <button
