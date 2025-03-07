@@ -1,24 +1,42 @@
 import React, { useState } from "react";
 import { IconChevronDown, IconStar } from "@tabler/icons-react"; // Import icon dari Tabler
 
-const UserList = ({ users, loading, searchPerformed }) => {
-    const [openIndex, setOpenIndex] = useState(null);
-    const [likedRepos, setLikedRepos] = useState({});
+// Definisikan tipe data untuk repository
+interface Repository {
+    title: string;
+    description: string;
+    likes: string; // Bisa diubah ke number jika backend mengembalikannya sebagai angka
+}
 
-    const toggleDropdown = (index) => {
+// Definisikan tipe data untuk user
+interface User {
+    id: string;
+    name: string;
+    data: Repository[];
+}
+
+// Definisikan tipe data untuk props komponen
+interface UserListProps {
+    users: User[];
+    loading: boolean;
+    searchPerformed: boolean;
+}
+
+const UserList: React.FC<UserListProps> = ({ users, loading, searchPerformed }) => {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const [likedRepos, setLikedRepos] = useState<{ [key: string]: boolean }>({});
+
+    const toggleDropdown = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-
     // Fungsi untuk toggle like/unlike
-    const handleLikeToggle = (userId, repoIndex) => {
+    const handleLikeToggle = (userId: string, repoIndex: number) => {
         setLikedRepos((prevLikes) => {
             const key = `${userId}-${repoIndex}`;
-            const isLiked = prevLikes[key]; // Cek apakah sudah di-like
-
             return {
                 ...prevLikes,
-                [key]: isLiked ? undefined : 1, // Jika sudah like, hapus. Jika belum, tambahkan like.
+                [key]: !prevLikes[key], // Toggle true/false
             };
         });
     };
@@ -58,7 +76,7 @@ const UserList = ({ users, loading, searchPerformed }) => {
                                         <ul className="space-y-2">
                                             {user.data.map((repo, repoIndex) => {
                                                 const key = `${user.id}-${repoIndex}`;
-                                                const isLiked = likedRepos[key] !== undefined; // Cek apakah repository sudah di-like
+                                                const isLiked = likedRepos[key] || false; // Cek apakah repository sudah di-like
                                                 const likes = parseInt(repo.likes, 10) + (isLiked ? 1 : 0); // Jika di-like, tambahkan 1
 
                                                 return (
