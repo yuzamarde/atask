@@ -1,3 +1,5 @@
+# the live deploy url https://atask-one.vercel.app/
+
 # GITHUB REPOSITORIES EXPLORER 🚀
 
 ## 🔥 ABOUT THIS PROJECT
@@ -16,6 +18,8 @@ This project is deployed on **Railway**.
 - Railway Hosting
 
 ## 📂 PROJECT STRUCTURE
+
+
 
 
 
